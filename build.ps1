@@ -5,7 +5,8 @@
 param([ValidateSet('studio', 'release', 'emulator')][string]$Mode = 'studio')
 
 $ErrorActionPreference = 'Stop'
-$dev = 'C:\Users\Mindray\AndroidDev'
+# 工具目录（dotnet / jdk17 / android-sdk / 签名密钥），可用环境变量 JABLE_ANDROID_DEV 改
+$dev = if ($env:JABLE_ANDROID_DEV) { $env:JABLE_ANDROID_DEV } else { Join-Path $HOME 'AndroidDev' }
 $env:DOTNET_ROOT = "$dev\dotnet"
 $dotnet = "$dev\dotnet\dotnet.exe"
 $root = $PSScriptRoot
