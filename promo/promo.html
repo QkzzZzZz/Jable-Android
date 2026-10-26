@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Jable 宣传图（安卓）</title>
+<!-- 渲染：render.ps1（Edge 无头模式，1080×1920，#a1 / #a2 / #a3） -->
+<style>
+  :root {
+    --red: #E50914; --bg: #0b0b0c; --panel: #141414; --card: #1f1f21;
+    --fg: #fff; --fg2: #b3b3b3; --fg3: #808080;
+    --cn: "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+    --brand: "Bahnschrift SemiBold Condensed", "Bahnschrift", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); font-family: var(--cn); color: var(--fg); }
+  .scene { display: none; position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background: radial-gradient(800px 700px at 50% 0%, rgba(229,9,20,.32), transparent 70%),
+                radial-gradient(700px 600px at 100% 100%, rgba(229,9,20,.16), transparent 70%), var(--bg); }
+  .scene.on { display: block; }
+
+  .copy { position: absolute; left: 0; right: 0; top: 120px; text-align: center; }
+  .logo { font-family: var(--brand); color: var(--red); font-size: 46px; letter-spacing: 1px; }
+  .logo small { font-family: var(--cn); color: var(--fg2); font-size: 24px; letter-spacing: 0; margin-left: 12px; vertical-align: 6px; }
+  .copy h1 { font-size: 92px; line-height: 1.12; font-weight: 800; margin: 30px 0 22px; letter-spacing: -1px; }
+  .copy h1 em { font-style: normal; color: var(--red); }
+  .copy p { font-size: 32px; line-height: 1.55; color: var(--fg2); }
+  .pills { display: flex; justify-content: center; gap: 14px; margin-top: 30px; }
+  .pill { padding: 10px 22px; border-radius: 999px; font-size: 24px; background: rgba(229,9,20,.14); border: 1px solid rgba(229,9,20,.5); }
+
+  /* 手机 */
+  .phone { position: absolute; left: 50%; top: 640px; transform: translateX(-50%); width: 640px; height: 1250px; border-radius: 86px;
+    background: #050505; padding: 16px; box-shadow: 0 0 0 3px #2a2a2c, 0 60px 140px rgba(0,0,0,.8), 0 0 120px rgba(229,9,20,.18); }
+  .screen { position: relative; width: 100%; height: 100%; border-radius: 72px; overflow: hidden; background: var(--panel); }
+  .status { position: absolute; top: 0; left: 0; right: 0; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; font-size: 22px; font-weight: 600; z-index: 6; }
+  .status .cam { position: absolute; left: 50%; top: 20px; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; background: #000; box-shadow: 0 0 0 3px #111; }
+  .tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #181818; border-top: 1px solid #262626; display: flex; justify-content: space-around; align-items: center; padding-bottom: 18px; z-index: 5; }
+  .tabs div { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 20px; color: var(--fg3); }
+  .tabs div i { width: 34px; height: 30px; border-radius: 8px; background: currentColor; opacity: .9; }
+  .tabs div.on { color: #fff; font-weight: 700; }
+
+  /* 抽象占位封面（不用真实封面） */
+  .cv, .hero .bg, .ph { background:
+      radial-gradient(circle at var(--x, 30%) var(--y, 35%), var(--a), transparent 55%),
+      radial-gradient(circle at 75% 75%, var(--b), transparent 55%),
+      linear-gradient(135deg, var(--c), #101012); }
+  .p1 { --a: #ff7a59; --b: #7b2ff7; --c: #3a1020; }
+  .p2 { --a: #ffd36e; --b: #ff4d6d; --c: #40210f; --x: 70%; }
+  .p3 { --a: #5ee7df; --b: #3d5afe; --c: #0e2a3a; }
+  .p4 { --a: #f78fb3; --b: #c44569; --c: #3b1530; --y: 60%; }
+  .p5 { --a: #a1ffce; --b: #13a89e; --c: #0f2f2a; --x: 60%; }
+  .p6 { --a: #fbc2eb; --b: #a18cd1; --c: #2a1d3d; }
+  .p7 { --a: #ff9a8b; --b: #ff6a88; --c: #3b1414; --x: 65%; --y: 25%; }
+  .p8 { --a: #89f7fe; --b: #66a6ff; --c: #102033; --x: 25%; --y: 70%; }
+
+  /* 首页 */
+  .hero { position: relative; height: 650px; }
+  .hero .bg { position: absolute; inset: 0; }
+  .hero .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.45) 0%, transparent 25%, rgba(20,20,20,.6) 65%, var(--panel) 100%); }
+  .hero .bar { position: absolute; top: 70px; left: 32px; right: 32px; display: flex; justify-content: space-between; align-items: center; }
+  .hero .bar b { font-family: var(--brand); color: var(--red); font-size: 50px; font-weight: normal; }
+  .hero .bar span { font-size: 40px; }
+  .hero .txt { position: absolute; left: 32px; right: 32px; bottom: 40px; }
+  .rank { display: flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 700; }
+  .rank i { background: var(--red); border-radius: 6px; font-style: normal; font-size: 15px; line-height: .95; padding: 5px 7px; text-align: center; }
+  .code { font-family: var(--brand); font-size: 96px; margin: 8px 0 4px; }
+  .sub { color: #e0e0e0; font-size: 26px; }
+  .btns { display: flex; gap: 18px; margin-top: 24px; }
+  .btn { padding: 16px 40px; border-radius: 999px; font-size: 28px; font-weight: 700; background: #fff; color: #000; }
+  .btn.ghost { background: rgba(110,110,110,.6); color: #fff; }
+  .row { padding: 0 22px; margin-top: 20px; }
+  .row h3 { font-size: 34px; margin: 0 10px 16px; display: flex; justify-content: space-between; align-items: baseline; }
+  .row h3 small { font-size: 24px; color: var(--fg2); font-weight: 400; }
+  .hs { display: flex; gap: 0; }
+  .c { padding: 0 10px; flex: none; }
+  .hs .c { width: 330px; }
+  .c .cv { aspect-ratio: 16 / 9; border-radius: 14px; position: relative; overflow: hidden; }
+  .c .t { font-size: 25px; color: #e5e5e5; margin-top: 12px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .c .m { font-size: 21px; color: var(--fg3); margin-top: 6px; }
+  .pbar { position: absolute; left: 18px; right: 18px; bottom: 14px; height: 6px; background: rgba(128,128,128,.6); }
+  .pbar b { display: block; height: 100%; background: var(--red); }
+  .top { position: absolute; left: 0; top: 0; background: var(--red); font-size: 22px; font-weight: 800; padding: 3px 14px; border-radius: 14px 0 14px 0; }
+
+  /* 列表页 */
+  .head { position: absolute; top: 64px; left: 0; right: 0; height: 110px; display: flex; align-items: center; gap: 36px; padding: 0 40px; font-size: 40px; font-weight: 700; background: var(--panel); z-index: 4; }
+  .grid { position: absolute; top: 160px; left: 14px; right: 14px; display: grid; grid-template-columns: 1fr 1fr; row-gap: 26px; }
+  .grid .c { width: auto; }
+  .blur { filter: blur(1.4px); }
+  .speed { position: absolute; right: 22px; top: 300px; bottom: 260px; width: 8px; border-radius: 4px; background: rgba(255,255,255,.08); z-index: 4; }
+  .speed b { position: absolute; left: 0; right: 0; top: 30%; height: 18%; border-radius: 4px; background: rgba(255,255,255,.55); }
+  .fps { position: absolute; z-index: 7; padding: 18px 30px; border-radius: 26px; background: rgba(24,24,26,.85); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.14); box-shadow: 0 20px 50px rgba(0,0,0,.6); }
+  .fps b { font-family: var(--brand); font-size: 64px; font-weight: normal; color: var(--red); line-height: 1; }
+  .fps span { display: block; font-size: 22px; color: var(--fg2); margin-top: 6px; }
+
+  /* 画像页 */
+  .pf { position: absolute; top: 80px; left: 30px; right: 30px; }
+  .pf .me { display: flex; align-items: center; gap: 22px; margin: 18px 0 26px; }
+  .pf .me .av { width: 96px; height: 96px; border-radius: 26px; background: linear-gradient(135deg, #e50914, #7a0610); }
+  .pf .me h2 { font-size: 44px; } .pf .me p { color: var(--fg2); font-size: 22px; margin-top: 6px; }
+  .box { background: #1c1c1e; border: 1px solid rgba(255,255,255,.06); border-radius: 24px; padding: 20px 24px; margin-bottom: 14px; }
+  .box h4 { font-size: 24px; color: var(--fg2); font-weight: 600; margin-bottom: 18px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .stat b { display: block; font-family: var(--brand); font-size: 62px; font-weight: normal; line-height: 1.05; }
+  .stat span { color: var(--fg3); font-size: 21px; }
+  .hb { display: grid; grid-template-columns: 120px 1fr 64px; align-items: center; gap: 14px; font-size: 24px; margin-bottom: 14px; }
+  .hb .tr { height: 12px; border-radius: 6px; background: #2a2a2c; }
+  .hb .tr b { display: block; height: 100%; border-radius: 6px; background: var(--red); }
+  .hb em { font-style: normal; color: var(--fg3); font-size: 21px; text-align: right; }
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { padding: 10px 22px; border-radius: 999px; background: #2a2a2c; font-size: 23px; }
+  .chip.hot { background: rgba(229,9,20,.18); border: 1px solid rgba(229,9,20,.5); }
+  .guess { display: flex; margin: 0 -10px; }
+  .guess .c { width: 50%; }
+</style>
+</head>
+<body>
+
+<!-- ① 首页 -->
+<section class="scene" id="a1">
+  <div class="copy">
+    <div class="logo">JABLE<small>安卓版</small></div>
+    <h1>把片库<br><em>装进口袋</em></h1>
+    <p>Jable、MissAV、漫画、直播，一个 App 看全<br>没有广告，打开就看</p>
+  </div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>21:30</span><div class="cam"></div><span>5G ▮▮▮ 86%</span></div>
+    <div class="hero">
+      <div class="bg p7" style="--x:60%;--y:35%"></div>
+      <div class="shade"></div>
+      <div class="bar"><b>JABLE</b><span>⌕</span></div>
+      <div class="txt">
+        <div class="rank"><i>TOP<br>10</i>本周热门第 1 名</div>
+        <div class="code">JBL-001</div>
+        <div class="sub">左右滑动切换本周热门</div>
+        <div class="btns"><div class="btn">▶ 播放</div><div class="btn ghost">ⓘ 详情</div></div>
+      </div>
+    </div>
+    <div class="row">
+      <h3>继续观看<small>全部 ›</small></h3>
+      <div class="hs">
+        <div class="c"><div class="cv p1"><div class="pbar"><b style="width:62%"></b></div></div><div class="t">城市夜色 特别篇</div><div class="m">JBL-104 · 1:58:32</div></div>
+        <div class="c"><div class="cv p3"><div class="pbar"><b style="width:28%"></b></div></div><div class="t">海边假日</div><div class="m">JBL-087 · 2:04:14</div></div>
+      </div>
+    </div>
+    <div class="row">
+      <h3>本周热门 TOP 10</h3>
+      <div class="hs">
+        <div class="c"><div class="cv p2"><div class="top">TOP 1</div></div></div>
+        <div class="c"><div class="cv p8"><div class="top">TOP 2</div></div></div>
+      </div>
+    </div>
+    <div class="tabs"><div class="on"><i></i>首页</div><div><i></i>发现</div><div><i></i>漫画</div><div><i></i>直播</div><div><i></i>我的</div></div>
+  </div></div>
+</section>
+
+<!-- ② 流畅滑动 -->
+<section class="scene" id="a2">
+  <div class="copy">
+    <div class="logo">JABLE<small>安卓版</small></div>
+    <h1>一路滑下去<br><em>顺滑跟手</em></h1>
+    <p>适配 120Hz 高刷屏，原生动画</p>
+    <div class="pills"><span class="pill">封面后台解码</span><span class="pill">滑回来瞬间显示</span><span class="pill">提前加载下一页</span></div>
+  </div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>21:30</span><div class="cam"></div><span>5G ▮▮▮ 86%</span></div>
+    <div class="head"><span>←</span>最近更新</div>
+    <div class="grid">
+      <div class="c"><div class="cv p4"></div><div class="t">雨天咖啡馆</div><div class="m">JBL-066 · 2:21:58</div></div>
+      <div class="c"><div class="cv p5"></div><div class="t">午后时光</div><div class="m">JBL-052 · 1:49:00</div></div>
+      <div class="c"><div class="cv p6"></div><div class="t">旅行日记</div><div class="m">JBL-031 · 2:07:43</div></div>
+      <div class="c"><div class="cv p2"></div><div class="t">初夏物语</div><div class="m">JBL-118 · 2:00:29</div></div>
+      <div class="c blur"><div class="cv p8"></div><div class="t">星空下的约定</div><div class="m">JBL-120 · 1:57:35</div></div>
+      <div class="c blur"><div class="cv p1"></div><div class="t">温泉旅馆 2</div><div class="m">JBL-121 · 2:13:22</div></div>
+      <div class="c blur"><div class="cv p3"></div><div class="t">周末的画室</div><div class="m">JBL-125 · 2:26:22</div></div>
+      <div class="c blur"><div class="cv p7"></div><div class="t">海风与蓝</div><div class="m">JBL-130 · 1:58:47</div></div>
+      <div class="c blur"><div class="cv p5"></div><div class="t">春日来信</div><div class="m">JBL-133 · 2:04:19</div></div>
+      <div class="c blur"><div class="cv p6"></div><div class="t">夜车</div><div class="m">JBL-140 · 2:18:30</div></div>
+    </div>
+    <div class="speed"><b></b></div>
+    <div class="tabs"><div class="on"><i></i>首页</div><div><i></i>发现</div><div><i></i>漫画</div><div><i></i>直播</div><div><i></i>我的</div></div>
+  </div></div>
+  <div class="fps" style="left:56px; top:960px"><b>120</b><span>Hz 高刷</span></div>
+</section>
+
+<!-- ③ 画像 -->
+<section class="scene" id="a3">
+  <div class="copy">
+    <div class="logo">JABLE<small>安卓版</small></div>
+    <h1>越看<br><em>越懂你</em></h1>
+    <p>猜我喜欢 · 我的画像<br>全部在手机上计算，不上传任何数据</p>
+  </div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>21:30</span><div class="cam"></div><span>5G ▮▮▮ 86%</span></div>
+    <div class="pf">
+      <div class="me"><div class="av"></div><div><h2>我的画像</h2><p>根据观看记录生成，只保存在本机</p></div></div>
+      <div class="box">
+        <h4>观看统计</h4>
+        <div class="stats">
+          <div class="stat"><b>86</b><span>累计部数</span></div>
+          <div class="stat"><b>142</b><span>累计小时</span></div>
+          <div class="stat"><b>12</b><span>本周观看</span></div>
+        </div>
+      </div>
+      <div class="box">
+        <h4>口味偏好</h4>
+        <div class="hb"><span>剧情</span><div class="tr"><b style="width:88%"></b></div><em>32%</em></div>
+        <div class="hb"><span>长篇</span><div class="tr"><b style="width:64%"></b></div><em>23%</em></div>
+        <div class="hb"><span>写真</span><div class="tr"><b style="width:46%"></b></div><em>17%</em></div>
+      </div>
+      <div class="box">
+        <h4>喜欢的演员外表画像</h4>
+        <div class="chips"><span class="chip hot">长发</span><span class="chip hot">甜美</span><span class="chip">高挑</span><span class="chip">清纯</span></div>
+      </div>
+      <div class="box">
+        <h4>猜我喜欢</h4>
+        <div class="guess">
+          <div class="c"><div class="cv p2"></div><div class="t">初夏物语</div></div>
+          <div class="c"><div class="cv p6"></div><div class="t">星空下的约定</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs"><div><i></i>首页</div><div><i></i>发现</div><div><i></i>漫画</div><div><i></i>直播</div><div class="on"><i></i>我的</div></div>
+  </div></div>
+</section>
+
+<script>
+  const id = (location.hash || '#a1').slice(1);
+  (document.getElementById(id) || document.querySelector('.scene')).classList.add('on');
+</script>
+</body>
+</html>
