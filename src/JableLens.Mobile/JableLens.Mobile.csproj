@@ -1,0 +1,69 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- 只做安卓版（Windows 版是 JableLens.App） -->
+		<TargetFramework>net10.0-android</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>JableLens.Mobile</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<MauiXamlInflator>SourceGen</MauiXamlInflator>
+
+		<ApplicationTitle>Jable</ApplicationTitle>
+		<ApplicationId>com.jable.app</ApplicationId>
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
+
+		<!-- Android 7.0 起（WebView 能跑 hls.js / MSE） -->
+		<SupportedOSPlatformVersion>24.0</SupportedOSPlatformVersion>
+
+		<!-- 直接打出可安装的 APK（不是商店用的 AAB）。只打 64 位 ARM：近几年的手机（含小米 Civi 4 Pro）都是，APK 小一半 -->
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+		<!-- 在电脑的模拟器上测试时：dotnet build -p:Emulator=true（x86_64，程序打进 APK 里，可以直接 adb install） -->
+		<RuntimeIdentifiers Condition="'$(Emulator)' == 'true'">android-x64</RuntimeIdentifiers>
+		<EmbedAssembliesIntoApk Condition="'$(Emulator)' == 'true'">true</EmbedAssembliesIntoApk>
+		<!-- 给 Android Studio 运行 / 性能分析用：-p:Studio=true，同时带手机和模拟器两种 CPU -->
+		<RuntimeIdentifiers Condition="'$(Studio)' == 'true'">android-arm64;android-x64</RuntimeIdentifiers>
+		<!-- 只带中文资源 -->
+		<SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<AndroidLinkTool>r8</AndroidLinkTool>
+		<!-- .NET 10 安卓 SDK 36.1 同时打两种 CPU 时这一步会报内部错误（XAGNM7009），关掉不影响功能 -->
+		<AndroidEnableMarshalMethods>false</AndroidEnableMarshalMethods>
+		<!-- System.Text.Json 反射序列化 library.json，裁剪会把属性剪掉，所以不裁剪 Core -->
+		<TrimMode>partial</TrimMode>
+		<!-- 全部代码提前编译成机器码：不再边用边 JIT，第一次滑列表、开页面不卡顿 -->
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+		<AndroidStripILAfterAOT>true</AndroidStripILAfterAOT>
+		<!-- 并发垃圾回收：回收时界面线程停顿更短 -->
+		<AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#E50914" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#141414" BaseSize="128,128" />
+		<MauiImage Include="Resources\Images\*" />
+		<MauiFont Include="Resources\Fonts\*" />
+		<!-- 播放器脚本 player_mobile.js 和 hls.min.js 都在 Resources\Raw 里 -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\JableLens.Core\JableLens.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<TrimmerRootAssembly Include="JableLens.Core" />
+	</ItemGroup>
+
+</Project>

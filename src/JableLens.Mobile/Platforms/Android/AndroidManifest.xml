@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- largeHeap：封面图多，内存上限放宽，少触发垃圾回收停顿 -->
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:hardwareAccelerated="true" android:largeHeap="true">
+		<!-- 允许 Android Studio 的性能分析器（帧率 / CPU）连接正式版，不影响别的 -->
+		<profileable android:shell="true" />
+	</application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="JableLens.Mobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:p="clr-namespace:JableLens.Mobile.Pages"
+    Title="Jable"
+    FlyoutBehavior="Disabled">
+    <!-- 底部五个栏目：Windows 版顶栏的东西分到这里 -->
+    <TabBar>
+        <ShellContent Title="首页" Icon="tab_home.png" Route="home" ContentTemplate="{DataTemplate p:HomePage}" />
+        <ShellContent Title="发现" Icon="tab_discover.png" Route="discover" ContentTemplate="{DataTemplate p:DiscoverPage}" />
+        <ShellContent Title="漫画" Icon="tab_comic.png" Route="comic" ContentTemplate="{DataTemplate p:ComicBrowsePage}" />
+        <ShellContent Title="直播" Icon="tab_live.png" Route="live" ContentTemplate="{DataTemplate p:LivePage}" />
+        <ShellContent Title="我的" Icon="tab_me.png" Route="me" ContentTemplate="{DataTemplate p:MinePage}" />
+    </TabBar>
+</Shell>

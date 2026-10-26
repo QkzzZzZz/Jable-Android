@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 和 Windows 版同一套深色配色（Netflix 风格：近黑底、红色强调） -->
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Color x:Key="Bg">#141414</Color>
+    <Color x:Key="Panel">#181818</Color>
+    <Color x:Key="Card">#2F2F2F</Color>
+    <Color x:Key="Soft">#262628</Color>
+    <Color x:Key="Line">#404040</Color>
+    <Color x:Key="Fg">#FFFFFF</Color>
+    <Color x:Key="Fg2">#B3B3B3</Color>
+    <Color x:Key="Fg3">#808080</Color>
+    <Color x:Key="Accent">#E50914</Color>
+    <Color x:Key="Glass">#D91C1C1E</Color>
+</ResourceDictionary>
